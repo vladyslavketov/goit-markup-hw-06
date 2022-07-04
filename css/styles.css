@@ -61,6 +61,11 @@ img {
   height: auto;
 }
 
+a:hover,
+button:hover {
+  cursor: pointer;
+}
+
 /* common styles start */
 .section {
   padding-top: 94px;
@@ -278,7 +283,7 @@ img {
   color: var(--main-bg-cl);
 
   background-color: var(--accent-cl);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px var(--footer-form-drop-shadow);
   border-radius: 4px;
   border-width: 0px;
 
@@ -638,7 +643,7 @@ img {
   
   background-color: var(--accent-cl);
   border: 0;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 4px var(--footer-form-drop-shadow);
   border-radius: 4px;
 }
 
@@ -711,11 +716,18 @@ img {
   fill: var(--dark-lg-cl);
 }
 
+.btn-modal-close:hover .icon-modal-close,
+.btn-modal-close:focus .icon-modal-close {
+  fill: var(--accent-cl);
+}
+
 .modal-form {
   display: flex;
   flex-direction: column;
 
   padding: 40px;
+
+  line-height: 1.167;
 }
 
 .modal-form strong {
@@ -728,26 +740,40 @@ img {
   color: var(--secondary-cl);
 }
 
-.modal-form label {
-  margin-bottom: 4px;
+.modal-form-field {
+  position: relative;
+  margin-bottom: 10px;
+}
 
+.modal-form label {
+  display: block;
   font-size: 12px;
-  line-height: 1.167;
   letter-spacing: 0.01em;
+  margin-bottom: 4px;
 }
 
 .modal-form input {
   width: 448px;
   height: 40px;
-  margin-bottom: 10px;
+  padding: 0 0 0 42px;
 
   border: 1px solid var(--modal-form-border-cl);
   border-radius: 4px;
 }
 
+.modal-form input:focus,
+.modal-form textarea:focus {
+  border: 1px solid var(--accent-cl);
+}
+
+.modal-form-field input:focus + .modal-icon {
+  fill: var(--accent-cl);
+}
+
 .modal-form textarea {
   width: 448px;
   height: 120px;
+  margin-bottom: 20px;
   padding: 12px 16px;
   resize: none;
 
@@ -757,11 +783,60 @@ img {
 
 .modal-form textarea::placeholder {
   font-size: 12px;
-  line-height: 1.167;
   letter-spacing: 0.01em;
   color: var(--modal-form-placeholder-cl);
 }
 
+.modal-icon {
+  position: absolute;
+  bottom: 11px;
+  left: 12px;
+  fill: var(--secondary-cl);
+}
+
+.modal-policy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  line-height: 1.71;
+}
+
+.modal-policy label {
+  margin-bottom: 0px;
+
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  line-height: 1.71;
+}
+
+.modal-policy input {
+  width: 16px;
+  height: 15px;
+  margin-right: 7px;
+}
+
+.modal-policy a {
+  color: var(--accent-cl);
+}
+
+.modal-btn {
+  padding: 10px 55px 10px 56px;
+  margin: 30px auto 0;
+  
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  color: var(--main-bg-cl);
+  
+  background-color: var(--accent-cl);
+  box-shadow: 0px 4px 4px var(--footer-form-drop-shadow);
+  border-radius: 4px;
+  border-width: 0px;
+  
+  transition: background-color var(--transition-d) var(--transition-t-f);
+}
 /* modal (end) */
 
 /* блок main - portfolio.hmtl (start) */
