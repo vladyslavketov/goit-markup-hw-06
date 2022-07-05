@@ -28,8 +28,10 @@
   --project-item-cl: #EEEEEE;
   --project-overlay-cl: rgba(33, 150, 243, 0.9);
 
+  --backdrop-bgc: rgba(0, 0, 0, 0.2);
   --modal-form-border-cl: rgba(33, 33, 33, 0.2);
   --modal-form-placeholder-cl: rgba(117, 117, 117, 0.5);
+  --modal-checkbox-bsh: rgba(0, 0, 0, 0.25);
 
   /* animation */
   --transition-d: 250ms;
@@ -230,7 +232,6 @@ button:hover {
   fill: currentColor;
 }
 /* блок header (end) */
-
 /* блок main - index.hmtl (start) */
 /* секція hero */
 .hero {
@@ -286,7 +287,6 @@ button:hover {
   box-shadow: 0px 4px 4px var(--footer-form-drop-shadow);
   border-radius: 4px;
   border-width: 0px;
-
   transition: background-color var(--transition-d) var(--transition-t-f);
 }
 
@@ -294,7 +294,6 @@ button:hover {
 .hero-btn:focus {
   background-color: var(--hero-btn-cl);
 }
-
 /* секція features / особености */
 .features-list {
   display: flex;
@@ -330,7 +329,6 @@ button:hover {
   text-transform: uppercase;
   color: var(--secondary-cl);
 }
-
 /* заголовок секцій direction & team */
 .direction-title,
 .team-title,
@@ -343,7 +341,6 @@ button:hover {
   text-align: center;
   color: var(--secondary-cl);
 }
-
 /* секція direction / секція чем мы занимаемся  */
 .direction {
   padding-top: 0px;
@@ -380,7 +377,6 @@ button:hover {
 
   background: var(--direction-overlay-cl)
 }
-
 /* секція team / наша команда */
 .team {
   background-color: var(--team-bg-cl);
@@ -467,7 +463,6 @@ button:hover {
 .team-socials-icon {
   fill: currentColor;
 }
-
 /* секція clients / постоянные клиенты */
 .clients-list {
   display: flex;
@@ -493,7 +488,6 @@ button:hover {
 
   border: 1px solid var(--socials-cl);
   border-radius: 4px;
-
   transition: color var(--transition-d) var(--transition-t-f), 
     border var(--transition-d) var(--transition-t-f);
 }
@@ -581,9 +575,8 @@ button:hover {
 
   background-color: var(--footer-icon-bg-cl);
   border-radius: 50px;
-
   transition: color var(--transition-d) var(--transition-t-f),
-  background-color var(--transition-d) var(--transition-t-f);
+    background-color var(--transition-d) var(--transition-t-f);
 }
 
 .footer-socials-link:hover,
@@ -661,8 +654,7 @@ button:hover {
   width: 100%;
   height: 100%;
 
-  background-color: rgba(0, 0, 0, 0.2);
-
+  background-color: var(--backdrop-bgc);
   transition: transform var(--transition-d) var(--transition-t-f),
     opacity var(--transition-d) var(--transition-t-f),
     visibility var(--transition-d) var(--transition-t-f);
@@ -693,7 +685,7 @@ button:hover {
   transform: translate(-50%, -50%) scaleX(1.2);
 }
 
-.btn-modal-close {
+.modal-close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -709,15 +701,15 @@ button:hover {
   background: var(--main-bg-cl);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-
 }
 
-.icon-modal-close {
+.modal-close-icon {
   fill: var(--dark-lg-cl);
+  transition: fill var(--transition-d) var(--transition-t-f);
 }
 
-.btn-modal-close:hover .icon-modal-close,
-.btn-modal-close:focus .icon-modal-close {
+.modal-close-btn:hover .modal-close-icon,
+.modal-close-btn:focus .modal-close-icon {
   fill: var(--accent-cl);
 }
 
@@ -726,11 +718,9 @@ button:hover {
   flex-direction: column;
 
   padding: 40px;
-
-  line-height: 1.167;
 }
 
-.modal-form strong {
+.modal-form-title {
   margin-bottom: 12px;
 
   font-weight: 700;
@@ -743,16 +733,20 @@ button:hover {
 .modal-form-field {
   position: relative;
   margin-bottom: 10px;
+
+  transition: border var(--transition-d) var(--transition-t-f);
 }
 
-.modal-form label {
+.modal-form-lable {
   display: block;
-  font-size: 12px;
-  letter-spacing: 0.01em;
   margin-bottom: 4px;
+
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
 }
 
-.modal-form input {
+.modal-form-field input {
   width: 448px;
   height: 40px;
   padding: 0 0 0 42px;
@@ -761,8 +755,8 @@ button:hover {
   border-radius: 4px;
 }
 
-.modal-form input:focus,
-.modal-form textarea:focus {
+.modal-form-field input:focus,
+.modal-form-textarea textarea:focus {
   border: 1px solid var(--accent-cl);
 }
 
@@ -770,10 +764,25 @@ button:hover {
   fill: var(--accent-cl);
 }
 
-.modal-form textarea {
+.modal-icon {
+  position: absolute;
+  bottom: 11px;
+  left: 12px;
+  fill: var(--secondary-cl);
+
+  transition: fill var(--transition-d) var(--transition-t-f);
+}
+
+.modal-form-textarea {
+  margin-bottom: 20px;
+
+  transition: border var(--transition-d) var(--transition-t-f);
+}
+
+.modal-form-textarea textarea {
+  display: block;
   width: 448px;
   height: 120px;
-  margin-bottom: 20px;
   padding: 12px 16px;
   resize: none;
 
@@ -787,19 +796,10 @@ button:hover {
   color: var(--modal-form-placeholder-cl);
 }
 
-.modal-icon {
-  position: absolute;
-  bottom: 11px;
-  left: 12px;
-  fill: var(--secondary-cl);
-}
-
 .modal-policy {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  line-height: 1.71;
 }
 
 .modal-policy label {
@@ -820,7 +820,36 @@ button:hover {
   color: var(--accent-cl);
 }
 
-.modal-btn {
+.modal-policy-icon {
+  order: -1;
+
+  margin-right: 7px;
+
+  border: 1px solid var(--dark-lg-cl);
+  border-radius: 2px;
+  box-shadow: 0px 4px 4px var(--modal-checkbox-bsh);
+}
+
+.modal-policy-checkbox {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+.modal-policy-checkbox:checked + .modal-policy-icon{
+  background-color: var(--accent-cl);
+  border: 1px solid var(--accent-cl);
+  box-shadow: none;
+}
+
+.modal-submit-btn {
   padding: 10px 55px 10px 56px;
   margin: 30px auto 0;
   
@@ -834,8 +863,11 @@ button:hover {
   box-shadow: 0px 4px 4px var(--footer-form-drop-shadow);
   border-radius: 4px;
   border-width: 0px;
-  
   transition: background-color var(--transition-d) var(--transition-t-f);
+}
+
+.modal-submit-btn:hover {
+  background-color: var(--hero-btn-cl);
 }
 /* modal (end) */
 
@@ -864,7 +896,6 @@ button:hover {
   background: var(--team-bg-cl);
   border-radius: 4px;
   border-width: 0;
-
   transition: color var(--transition-d) var(--transition-t-f),
     background-color var(--transition-d) var(--transition-t-f),
     box-shadow var(--transition-d) var(--transition-t-f);
